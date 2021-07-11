@@ -2,9 +2,9 @@
   "name": "03",
   "version": "1.0.0",
   "description": "",
-  "main": "reducer.ts",
+  "main": "store.ts",
   "scripts": {
-     "start:dev": "nodemon reducer.ts",
+     "start:dev": "nodemon store.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

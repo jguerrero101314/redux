@@ -1,7 +1,7 @@
 import { decrementadorAction, dividirAction, incrementadorAction, multiplicarAction, resetAction } from './contador/contador.actions';
 import { Action } from "./ngrx-fake/ngrx";
 
-export const reducer = ( state = 10, action:Action ) => {
+export const contadorreducer = ( state = 10, action:Action ) => {
   switch(action.type){
     case 'INCREMENTAR':
       return state += 1;
@@ -23,8 +23,8 @@ export const reducer = ( state = 10, action:Action ) => {
   }
 }
 
-console.log('incrementadorAction',reducer(10, incrementadorAction));
-console.log('decrementadorAction',reducer(10, decrementadorAction));
-console.log('multiplicarAction',reducer(10, multiplicarAction));
-console.log('dividirAction',reducer(10, dividirAction));
-console.log('resetAction',reducer(10, resetAction));
+console.log('incrementadorAction',contadorreducer(10, incrementadorAction));
+console.log('decrementadorAction',contadorreducer(10, decrementadorAction));
+console.log('multiplicarAction',contadorreducer(10, multiplicarAction));
+console.log('dividirAction',contadorreducer(10, dividirAction));
+console.log('resetAction',contadorreducer(10, resetAction));
