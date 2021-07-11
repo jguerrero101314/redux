@@ -2,11 +2,14 @@
   "name": "03",
   "version": "1.0.0",
   "description": "",
-  "main": "store.ts",
+  "main": "app-4.ts",
   "scripts": {
-     "start:dev": "nodemon store.ts",
+    "start:dev": "nodemon app-4.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "redux": "^4.1.0"
+  }
 }
