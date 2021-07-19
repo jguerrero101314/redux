@@ -17,10 +17,7 @@ export class AppComponent {
 
   constructor(private readonly store: Store<AppState>) {
     // this.contador = 10;
-    store.subscribe((state) => {
-      console.log(state);
-      this.contador = state.count;
-    });
+    store.select('count').subscribe((count) => (this.contador = count));
   }
 
   incrementar() {
