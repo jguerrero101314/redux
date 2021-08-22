@@ -4,7 +4,7 @@
 
         <label (click)="editClick()">{{todo.texto}}</label>
 
-        <button class="destroy"></button>
+        <button class="destroy" (click)="borrar()"></button>
     </div>
 
     <input class="edit" type="text" [formControl]="txtInput" (blur)="terminarEdicion()" #inputFisico>
