@@ -6,3 +6,8 @@ export const toggle = createAction(
   '[TODO] Toogle Todo',
   props<{ id: number }>()
 );
+
+export const editar = createAction(
+  '[TODO] editar Todo',
+  props<{ id: number; texto: string }>()
+);
