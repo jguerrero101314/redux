@@ -44,7 +44,7 @@ export class RegisterComponent implements OnInit {
 
     const { nombre, email, password } = this.registroForm.value;
     this.authService
-      .crearUsuario(nombre, email, password)
+      .crearUsuario(email, password)
       .then((credenciales) => {
         this.router.navigateByUrl("/");
       })
