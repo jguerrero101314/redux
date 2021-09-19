@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Router } from "@angular/router";
+import { AuthService } from "./../../services/auth.service";
 
 @Component({
   selector: "app-register",
@@ -9,7 +11,11 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 export class RegisterComponent implements OnInit {
   registroForm: FormGroup;
 
-  constructor(private readonly fb: FormBuilder) {}
+  constructor(
+    private readonly fb: FormBuilder,
+    private readonly authService: AuthService,
+    private readonly router: Router
+  ) {}
 
   ngOnInit() {
     this.registroForm = this.fb.group({
@@ -34,8 +40,14 @@ export class RegisterComponent implements OnInit {
   }
 
   crearUsuario() {
-    console.log(this.registroForm);
-    console.log(this.registroForm.valid);
-    console.log(this.registroForm.value);
+    if (this.registroForm.invalid) return;
+
+    const { nombre, email, password } = this.registroForm.value;
+    this.authService
+      .crearUsuario(nombre, email, password)
+      .then((credenciales) => {
+        this.router.navigateByUrl("/");
+      })
+      .catch((err) => console.error(err));
   }
 }
