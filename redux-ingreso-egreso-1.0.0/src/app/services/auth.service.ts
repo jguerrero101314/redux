@@ -15,4 +15,8 @@ export class AuthService {
     console.log(email, password);
     return this.auth.signInWithEmailAndPassword(email, password);
   }
+
+  logout() {
+    return this.auth.signOut();
+  }
 }
