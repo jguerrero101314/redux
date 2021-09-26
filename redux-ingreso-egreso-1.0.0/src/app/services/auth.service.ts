@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { AngularFireAuth } from "@angular/fire/auth";
+import { map } from "rxjs/operators";
 
 @Injectable({
   providedIn: "root",
@@ -8,11 +9,7 @@ export class AuthService {
   constructor(private readonly auth: AngularFireAuth) {}
 
   initAuthListener() {
-    this.auth.authState.subscribe((fuser) => {
-      console.log(fuser);
-      console.log(fuser?.uid);
-      console.log(fuser?.email);
-    });
+    this.auth.authState.subscribe((fuser) => {});
   }
 
   crearUsuario(email: string, password: string) {
@@ -26,5 +23,9 @@ export class AuthService {
 
   logout() {
     return this.auth.signOut();
+  }
+
+  isAuth() {
+    return this.auth.authState.pipe(map((fbUser) => fbUser != null));
   }
 }
