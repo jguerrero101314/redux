@@ -20,28 +20,16 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
     this.registroForm = this.fb.group({
-      nombre: [
-        "",
-        [
-          Validators.required,
-          Validators.minLength(8),
-          Validators.maxLength(64),
-        ],
-      ],
+      nombre: ["", [Validators.required]],
       email: ["", [Validators.required, Validators.email]],
-      password: [
-        "",
-        [
-          Validators.required,
-          Validators.minLength(8),
-          Validators.maxLength(64),
-        ],
-      ],
+      password: ["", [Validators.required]],
     });
   }
 
   crearUsuario() {
-    if (this.registroForm.invalid) return;
+    if (this.registroForm.invalid) {
+      return;
+    }
 
     Swal.fire({
       title: "Espere por favor",
@@ -50,12 +38,14 @@ export class RegisterComponent implements OnInit {
       },
     });
 
-    const { email, password } = this.registroForm.value;
+    const { nombre, email, password } = this.registroForm.value;
+
     this.authService
-      .crearUsuario(email, password)
+      .crearUsuario(nombre, email, password)
       .then((credenciales) => {
         Swal.close();
-        this.router.navigateByUrl("/");
+
+        this.router.navigate(["/"]);
       })
       .catch((err) => {
         Swal.fire({
